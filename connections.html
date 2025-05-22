@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <title>User Profile - LogiChain</title>
+    <meta name="description" content="Manage your profile, order history, and connections with LogiChain.">
+    <meta name="keywords" content="LogiChain, profile, logistics, user account, order history, connections">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="eg.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    
+    <style>
+        /* Updated Header Styling */
+        .sticky-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: #fff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #007bff;
+        }
+        footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #2c3e50 100%);
+    color: #fff;
+    padding: 80px 20px;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    font-size: 26px;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-section h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #fff;
+}
+
+.footer-section p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.8;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 15px;
+}
+
+.footer-section ul li a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+    transform: translateX(5px);
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.1);
+    padding: 8px;
+}
+
+.social-icons img:hover {
+    transform: scale(1.15);
+    background: rgba(255,255,255,0.2);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.1);
+    margin-top: 40px;
+}
+
+.footer-bottom p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.9);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-section h3:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+.connections-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .connection-tile {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .connection-tile:hover {
+            transform: translateY(-5px);
+        }
+
+        .connection-tile h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .connection-tile p {
+            color: #555;
+        }
+
+    </style>
+</head>
+
+<body>
+        <!-- Header -->
+        <header class="sticky-header">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo2.png" alt="LogiChain Logo" loading="lazy">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="services.html" class="nav-link"><i class="fas fa-truck"></i> Services</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h2 style="text-align: center; padding: 20px;"><font face="Bell MT">Connections</font></h2>
+        <h2 style="text-align: center; padding: 20px;">You Have 8 Connections</h2>
+        <div class="connections-container">
+            <div class="connection-tile">
+                <h3>Gautam Poonawala</h3>
+                <p>Warehouse: Allcargo Logistics</p>
+            </div>
+            <div class="connection-tile">
+                <h3>Mukesh Birla</h3>
+                <p>Warehouse: Mahindra Logistics</p>
+            </div>
+            <div class="connection-tile">
+                <h3>Narendra Pal</h3>
+                <p>Warehouse: DHL Supply chain</p>
+            </div>
+            <div class="connection-tile">
+                <h3>Akhilesh Jadhav</h3>
+                <p>Warehouse: XpressBees</p>
+            </div>
+            <div class="connection-tile">
+                <h3>Rahul Sharma</h3>
+                <p>Warehouse: TATA LPK Warehousing</p>
+            </div>
+            <div class="connection-tile">
+                <h3>William Phillips</h3>
+                <p>Warehouse: Gati Ltd.</p>
+            </div>
+            <div class="connection-tile">
+                <h3>Arman Junaid</h3>
+                <p>Warehouse: Reliance Logistics</p>
+            </div>
+            <div class="connection-tile">
+                <h3>Jay Singh</h3>
+                <p>Warehouse: Cold Storage Warehouses</p>
+            </div>
+        </div>
+    </main>
+
+        <!-- Footer (Simplified without Ask Us, Contact Us, or Login) -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3><i class="fas fa-info-circle"></i> About LogiChain</h3>
+                    <p>LogiChain leverages cutting-edge technology to provide innovative logistics solutions that transform supply chains worldwide. Trust us to deliver excellence in every shipment.</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-link"></i> Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="login.html"><i class="fas fa-chevron-right"></i> Login</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        <li><a href="askus.html"><i class="fas fa-chevron-right"></i> Ask Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section" id="contact">
+                    <h3><i class="fas fa-address-card"></i> Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@logichain.com</li>
+                        <li><i class="fas fa-phone"></i> +123 456 7890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/ypK41ys93yVyzEM19" target="_blank" rel="noopener noreferrer">Vishwakarma Institute of Technology, Bibvewadi campus (666 Upper Indira Nagar, Bibvewadi, Pune 411 037)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-share-alt"></i> Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2030 LogiChain | All rights reserved. | Designed with <i class="fas fa-heart"></i> by LogiChain Team</p>
+            </div>
+        </footer>
+        <!-- Scripts -->
+        <script src="js/script.js" defer></script>
+        <!-- AOS Animation Library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script>
+            AOS.init({
+                once: true,
+                offset: 200,
+                duration: 1000,
+                easing: 'ease-in-out',
+                disable: 'mobile'
+            });
+        </script>
+    </body>
+    
+    </html>
+    

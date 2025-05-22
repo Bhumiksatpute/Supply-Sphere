@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile & Chat - LogiChain</title>
+  <link rel="stylesheet" href="profile.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <div class="profile-container">
+    <h1 id="welcome-message">Welcome!</h1>
+
+    <section id="chat-section">
+      <h2>Chat with Other Users</h2>
+      <div id="chat-messages" style="border:1px solid #ccc; height:200px; overflow-y:scroll; margin-bottom:10px; padding:10px; background:#fafafa;"></div>
+      <form id="chat-form">
+        <input type="text" id="chat-input" placeholder="Type your message..." required style="width:70%;" />
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>

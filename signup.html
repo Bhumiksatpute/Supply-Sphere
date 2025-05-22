@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - AgriTrackr</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-card">
+            <div class="logo">
+                <img src="img/logo2.png" alt="SupplySphere Logo">
+            </div>
+            <h2>Create Your Account</h2>
+            <p>Join us to get personalized crop recommendations and real-time soil insights.</p>
+            <form id="signup-form" class="signup-form">
+                <div class="input-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" placeholder="Enter your full name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Create a password" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+            <p class="login-text">Already have an account? <a href="login.html">Login now</a></p>
+        </div>
+    </div>
+
+    <script>
+        function generateRandomPassword(length) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                password += characters[randomIndex];
+            }
+            return password;
+        }
+
+        function suggestPassword() {
+            const suggestedPassword = generateRandomPassword(12);
+            document.getElementById('password').value = suggestedPassword;
+            document.getElementById('confirm-password').value = suggestedPassword;
+            alert('Suggested Password: ' + suggestedPassword);
+
+            // After suggesting the password, focus back on the fullname field
+            document.getElementById('fullname').focus();
+        }
+
+        document.getElementById('password').addEventListener('focus', suggestPassword);
+
+        document.getElementById('signup-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://localhost:3000/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ fullname, email, password })
+                });
+
+                if (response.ok) {
+                    alert('User registered successfully');
+                } else {
+                    const errorData = await response.json();
+                    alert('Error registering user: ' + errorData.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error registering user: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>
+
+`
